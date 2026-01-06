@@ -7,6 +7,7 @@ import com.example.tasks.dto.request.TaskCreateRequestDTO;
 import com.example.tasks.dto.request.TaskUpdateRequestDTO;
 import com.example.tasks.dto.response.TaskResponseDTO;
 import com.example.tasks.dto.response.TaskStatsResponseDTO;
+import com.example.tasks.exception.BadRequestException;
 import com.example.tasks.exception.BusinessException;
 import com.example.tasks.exception.ResourceNotFoundException;
 import com.example.tasks.mapper.TaskMapper;
@@ -163,7 +164,7 @@ public class TaskServiceImpl implements TaskService {
 
     private void validateHighPriority(TaskPriority priority, LocalDate dueDate) {
         if (priority == TaskPriority.HIGH && dueDate == null) {
-            throw new BusinessException(
+            throw new BadRequestException(
                     "dueDate es obligatorio cuando la prioridad es HIGH"
             );
         }
