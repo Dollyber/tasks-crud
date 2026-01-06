@@ -13,7 +13,6 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 3, max = 80)
     @Column(nullable = false, length = 80)
     private String title;
 
